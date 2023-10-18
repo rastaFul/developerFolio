@@ -20,7 +20,7 @@ const illustration = {
 };
 
 const greeting = {
-  username: "Rodrigo Nascimento",
+  username: "Rodrigo",
   title: "Olá, eu sou o Rodrigo",
   subTitle: emoji(
     "Gosto de inovação e atuar com estudos de novas tecnologias e metodologias é o que me motiva. Pratico a autoanálise como um caminho essencial para o desenvolvimento pessoal e profissional."
