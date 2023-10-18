@@ -48,12 +48,9 @@ const skillsSection = {
   subTitle: "DESENVOLVEDOR BACKEND QUE AMA EXPLORAR CADA STACK DE TECNOLOGIA",
   skills: [
     emoji(
-      "⚡ Develop highly interactive Front end / User Interfaces for your web and mobile applications"
+      "⚡ Desenvolvedor Sênior | DevOps, Kubernetes, AWS"
     ),
-    emoji("⚡ Progressive Web Applications ( PWA ) in normal and SPA Stacks"),
-    emoji(
-      "⚡ Integration of third party services such as Firebase/ AWS / Digital Ocean"
-    )
+    emoji("⚡ Apaixonado por compartilhar conhecimento, promovo boas práticas de DevOps e dissemino aprendizado."),
   ],
 
   /* Make Sure to include correct Font Awesome Classname to view your icon
@@ -127,7 +124,7 @@ const educationInfo = {
     },
     {
       schoolName: "ETEC JK",
-      logo: require("./assets/images/etecLogo.png"),
+      logo: require("./assets/images/etecLogo.jpg"),
       subHeader: "Técnico em computação",
       duration: "Junho 2011 - Junho 2012",
       desc: "",
@@ -168,29 +165,37 @@ const workExperiences = {
   title: "Experiências",
   experience: [
     {
-      role: "Software Engineer",
-      company: "Facebook",
-      companylogo: require("./assets/images/facebookLogo.png"),
-      date: "June 2018 – Present",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      role: "Desenvolvedor de software sênior",
+      company: "Pontaltech",
+      companylogo: require("./assets/images/pontaltechLogo.webp"),
+      date: "Junho 2022 – Present",
+      desc: "Desenvolvedor Sênior | DevOps, Kubernetes, AWS",
       descBullets: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+        "Responsável por projetos de DevOps, integro desenvolvimento e operações para otimizar sistemas. Com foco em Kubernetes, AWS e melhores práticas de entrega.",
+        "Proficiente em Bitbucket Pipelines, Kubernetes (Amazon EKS) e infraestrutura AWS. Utilizo Terraform, Prometheus + Grafana e Helm para garantir consistência e segurança em implantações.",
+        "Crio documentação, conduzo code reviews e facilito comunicação entre equipes, embasando decisões técnicas."
       ]
     },
     {
-      role: "Front-End Developer",
-      company: "Quora",
-      companylogo: require("./assets/images/quoraLogo.png"),
-      date: "May 2017 – May 2018",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      role: "Desenvolvedor de software",
+      company: "Gorila",
+      companylogo: require("./assets/images/gorilaLogo.webp"),
+      date: "Março 2021 – Junho 2022",
+      desc: "Na Gorila, mergulhei na linguagem de programação TypeScript, com foco especial na biblioteca NestJS.",
+      descBullets: [
+        "Atuei na equipe de plataforma, colaborando na criação de soluções de pagamento, incluindo integrações com gateways como Google Store, através de Lambda Functions."
+      ]
     },
     {
-      role: "Software Engineer Intern",
-      company: "Airbnb",
-      companylogo: require("./assets/images/airbnbLogo.png"),
-      date: "Jan 2015 – Sep 2015",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      role: "Analista de sistema",
+      company: "Conquest One",
+      companylogo: require("./assets/images/conquestOneLogo.jpeg"),
+      date: "Julho 2020 – Março 2021",
+      desc: "Desenvolvedor NodeJS | PHP | AWS",
+      descBullets: [
+        "Desenvolvi e aprimorei o produto CarClick na Disal Tecnologia, com foco em manutenção do sistema e criação de novas funcionalidades. Também gerenciei infraestrutura, otimizando custos e confiabilidade dos produtos",
+        "Fui a ponte entre desenvolvimento e negócios, contribuindo ativamente."
+      ]
     }
   ]
 };
