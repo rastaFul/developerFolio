@@ -168,7 +168,7 @@ const workExperiences = {
       role: "Desenvolvedor de software sênior",
       company: "Pontaltech",
       companylogo: require("./assets/images/pontaltechLogo.webp"),
-      date: "Junho 2022 – Present",
+      date: "Junho 2022 – Presente",
       desc: "Desenvolvedor Sênior | DevOps, Kubernetes, AWS",
       descBullets: [
         "Responsável por projetos de DevOps, integro desenvolvimento e operações para otimizar sistemas. Com foco em Kubernetes, AWS e melhores práticas de entrega.",
