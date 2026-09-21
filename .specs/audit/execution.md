@@ -161,3 +161,41 @@
   "softwarte" ausente (0 ocorrências); números confidenciais ausentes
   (0 ocorrências de "100 microsservi*", "200 pods", "78k").
 - Status: DONE
+
+## Task: menu Projetos + telefone novo — 2026-09-21T18:23:11-03:00
+- Header.js: adicionado item "Projetos" (`#projects`, bigProjects.display)
+  entre "Experiências" e "Open Source", refletindo ordem Skills →
+  Experiências → Projetos do Main.js.
+- portfolio.js: contactInfo.number "+55 11982294023" -> "+55 11939393283".
+- Currículo PDF (public/curriculo-rodrigo-barbosa.pdf): telefone atualizado
+  para "+55 11 93939-3283" no bloco de contato, regenerado a partir do
+  curriculo.html original (scratchpad da sessão, pipeline Playwright +
+  Chromium) sem regressão de conteúdo (cargo, FinOps/Kubecost, timeline,
+  monograma R×B mantidos). Conferido via Read do PDF resultante.
+- Cópia solta salva em /mnt/c/Users/rodri/Downloads/curriculo-rodrigo-barbosa.pdf
+  (não rastreada em nenhum repo, só para compartilhamento via WhatsApp).
+- BUG encontrado e corrigido: primeiro commit do PDF corrompeu o binário
+  (CRLF normalization — .gitattributes tinha "* text eol=lf" sem exceção
+  para *.pdf). Corrigido em commit separado adicionando "*.pdf binary" ao
+  .gitattributes e reenviando o blob correto (verificado via
+  git cat-file -p, 60509 bytes, idêntico ao working tree).
+- grep -rn "98229" (excluindo .git, node_modules, build): 0 ocorrências.
+- check-format: PASS (Header.js, portfolio.js — prettier -c).
+- Gate visual Playwright: navegado em localhost:4123 (dev server já
+  rodando), $$eval(".menu li a") retornou
+  ["Skills","Experiências","Projetos","Contato",""] — ordem confirmada.
+  Screenshot: .specs/features/site-content-refresh/screenshots/menu-projetos.png
+- jest/tsc/eslint: não aplicável (conteúdo estático/JSX simples, sem lógica
+  de aplicação nova — mesma justificativa de tasks anteriores).
+- commits: a552553 (feat) + 5b90f34 (fix gitattributes), push: PASS
+  (d6f69e5..5b90f34 main -> main)
+- Nota: gh CLI sem -R apontava para upstream saadpasta/developerFolio
+  (repo errado) — usado -R rastaFul/developerFolio para todas as consultas
+  de Actions.
+- Deploy: Build and Deploy (push, main) -> completed SUCCESS. gh-pages
+  atualizado (pages-build-deployment completed SUCCESS logo em seguida).
+- Verificação ao vivo (https://rastaful.dev): bundle main.44f2ce10.js
+  contém "Projetos" e "939393283"; "98229" ausente (0 ocorrências).
+  PDF ao vivo (curriculo-rodrigo-barbosa.pdf, content-length 60509)
+  byte-idêntico ao arquivo local em public/ (diff -q vazio).
+- Status: DONE
