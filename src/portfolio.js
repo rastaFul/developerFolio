@@ -25,8 +25,7 @@ const greeting = {
   subTitle: emoji(
     "Gosto de inovação e atuar com estudos de novas tecnologias e metodologias é o que me motiva. Pratico a autoanálise como um caminho essencial para o desenvolvimento pessoal e profissional."
   ),
-  resumeLink:
-    "https://drive.google.com/file/d/1Qtt7BY-l0FKWmkmcQ1iI-0GTMz88qKjX/view?usp=share_link://drive.google.com/file/d/1ofFdKF_mqscH8WvXkSObnVvC9kK7Ldlu/view?usp=sharing", // Set to empty to hide the button
+  resumeLink: "https://rastaful.dev/curriculo-rodrigo-barbosa.pdf", // Set to empty to hide the button
   displayGreeting: true // Set false to hide this section, defaults to true
 };
 
@@ -45,12 +44,17 @@ const socialMediaLinks = {
 
 const skillsSection = {
   title: "O que eu faço",
-  subTitle: "DESENVOLVEDOR BACKEND QUE AMA EXPLORAR CADA STACK DE TECNOLOGIA",
+  subTitle: "ENGENHEIRO DE SOFTWARE COM FOCO EM PLATFORM ENGINEERING E DEVOPS",
   skills: [
     emoji(
-      "⚡ Desenvolvedor Sênior | DevOps, Kubernetes, AWS"
+      "⚡ Platform Engineer / DevOps Sênior | Kubernetes, Terraform, AWS, GitOps, Observabilidade"
     ),
-    emoji("⚡ Apaixonado por compartilhar conhecimento, promovo boas práticas de DevOps e dissemino aprendizado."),
+    emoji(
+      "⚡ Perfil híbrido: atuo tanto no código do produto (Node.js/TypeScript) quanto na infraestrutura"
+    ),
+    emoji(
+      "⚡ Construo ferramentas próprias de automação de infraestrutura assistida por IA"
+    )
   ],
 
   /* Make Sure to include correct Font Awesome Classname to view your icon
@@ -66,10 +70,6 @@ https://fontawesome.com/icons?d=gallery */
       fontAwesomeClassname: "fab fa-node"
     },
     {
-      skillName: "NPM",
-      fontAwesomeClassname: "fab fa-npm"
-    },
-    {
       skillName: "AWS",
       fontAwesomeClassname: "fab fa-aws"
     },
@@ -78,29 +78,29 @@ https://fontawesome.com/icons?d=gallery */
       fontAwesomeClassname: "fab fa-docker"
     },
     {
+      skillName: "Kubernetes",
+      fontAwesomeClassname: "fas fa-dharmachakra"
+    },
+    {
+      skillName: "Terraform",
+      fontAwesomeClassname: "fas fa-cubes"
+    },
+    {
+      skillName: "GitOps",
+      fontAwesomeClassname: "fas fa-code-branch"
+    },
+    {
+      skillName: "Observabilidade",
+      fontAwesomeClassname: "fas fa-chart-line"
+    },
+    {
       skillName: "Git",
       fontAwesomeClassname: "fab fa-git"
     },
     {
       skillName: "Linux",
       fontAwesomeClassname: "fab fa-linux"
-    },
-    {
-      skillName: "Windows",
-      fontAwesomeClassname: "fab fa-windows"
-    },
-    {
-      skillName: "MySQL",
-      fontAwesomeClassname: "fas fa-database"
-    },
-    {
-      skillName: "Kubernetes",
-      fontAwesomeClassname: "fas fa-dharmachakra"
-    },
-    {
-      skillName: "DevOps",
-      fontAwesomeClassname: "fas fa-cloud"
-    },
+    }
   ],
   display: true // Set false to hide this section, defaults to true
 };
@@ -148,7 +148,7 @@ const techStack = {
     },
     {
       Stack: "DevOps",
-      progressPercentage: "40%"
+      progressPercentage: "75%"
     },
     {
       Stack: "Programming",
@@ -165,15 +165,17 @@ const workExperiences = {
   title: "Experiências",
   experience: [
     {
-      role: "Desenvolvedor de software sênior",
+      role: "DevOps / Platform Engineer",
       company: "Pontaltech",
       companylogo: require("./assets/images/pontaltechLogo.webp"),
       date: "Junho 2022 – Presente",
-      desc: "Desenvolvedor Sênior | DevOps, Kubernetes, AWS",
+      desc: "Platform Engineer | Kubernetes, Terraform, AWS, Observabilidade, FinOps",
       descBullets: [
-        "Responsável por projetos de DevOps, integro desenvolvimento e operações para otimizar sistemas. Com foco em Kubernetes, AWS e melhores práticas de entrega.",
-        "Proficiente em Bitbucket Pipelines, Kubernetes (Amazon EKS) e infraestrutura AWS. Utilizo Terraform, Prometheus + Grafana e Helm para garantir consistência e segurança em implantações.",
-        "Crio documentação, conduzo code reviews e facilito comunicação entre equipes, embasando decisões técnicas."
+        "Atuei como desenvolvedor backend (Node.js/TypeScript) na squad core de um produto de disparo de SMS (~15M msgs/dia) antes de migrar para o time de DevOps/Infraestrutura, onde lidero iniciativas próprias de plataforma.",
+        "Modernização de plataforma: padronizei e executei migrações de EC2 para Kubernetes (EKS), com Helm, GitOps via ArgoCD e autoscaling (HPA/KEDA) — de deploy manual via SSH para deploy contínuo com auto-healing.",
+        "Observabilidade: reestruturei stack de métricas e alertas (VictoriaMetrics, Grafana, Alertmanager), reduzindo o tempo de detecção de incidentes de horas/dias para minutos, com 15+ dashboards operacionais.",
+        "FinOps: implementei visibilidade de custos por namespace/pod (Kubecost) em ambiente com 2 clusters EKS e 3 contas AWS, dando suporte a decisões de right-sizing.",
+        "Segurança: liderei enforcement de TLS 1.2+ em produção e eliminação de credenciais hardcoded via IRSA."
       ]
     },
     {
@@ -203,6 +205,8 @@ const workExperiences = {
 /* Your Open Source Section to View Your Github Pinned Projects
 To know how to get github key look at readme.md */
 
+// TODO: ativar quando rastafinancas + infra-platform + agents-harness
+// estiverem públicos e pinados (ver .specs/features/site-content-refresh/spec.md)
 const openSource = {
   showGithubProfile: "false", // Set true or false to show Contact profile using Github, defaults to true
   display: false // Set false to hide this section, defaults to true
@@ -211,34 +215,59 @@ const openSource = {
 // Some big projects you have worked on
 
 const bigProjects = {
-  title: "Big Projects",
-  subtitle: "SOME STARTUPS AND COMPANIES THAT I HELPED TO CREATE THEIR TECH",
+  title: "Projetos",
+  subtitle: "Produtos que coloquei no ar, do zero ao deploy",
   projects: [
     {
-      image: require("./assets/images/saayaHealthLogo.webp"),
-      projectName: "Saayahealth",
-      projectDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      image: require("./assets/images/projects/vetcare.png"),
+      projectName: "VetCare",
+      projectDesc:
+        "Sistema de gestão para clínicas veterinárias — prontuário eletrônico, agendamento, prescrições e cuidados preventivos, com integração à Google Calendar.",
       footerLink: [
         {
-          name: "Visit Website",
-          url: "http://saayahealth.com/"
+          name: "Visitar site",
+          url: "https://vetcare.rastaful.dev"
         }
-        //  you can add extra buttons here.
       ]
     },
     {
-      image: require("./assets/images/nextuLogo.webp"),
-      projectName: "Nextu",
-      projectDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      image: require("./assets/images/projects/artists-booking.png"),
+      projectName: "Artists Booking",
+      projectDesc:
+        "Marketplace para contratação de artistas, com busca geolocalizada e fluxo de reserva guiado.",
       footerLink: [
         {
-          name: "Visit Website",
-          url: "http://nextu.se/"
+          name: "Visitar site",
+          url: "https://artists.rastaful.dev"
+        }
+      ]
+    },
+    {
+      image: require("./assets/images/projects/rastafinancas.png"),
+      projectName: "RastaFinanças",
+      projectDesc:
+        "App pessoal de controle financeiro, com importação de extrato bancário, alertas e notificações automatizadas.",
+      footerLink: [
+        {
+          name: "Visitar site",
+          url: "https://financas.rastaful.dev"
+        }
+      ]
+    },
+    {
+      image: require("./assets/images/projects/microgrow.png"),
+      projectName: "MicroGrow",
+      projectDesc:
+        "Sistema de monitoramento e automação de cultivo indoor — sensores simulados, MQTT, InfluxDB e dashboards em tempo real.",
+      footerLink: [
+        {
+          name: "Visitar site",
+          url: "https://grow.rastaful.dev"
         }
       ]
     }
   ],
-  display: false // Set false to hide this section, defaults to true
+  display: true // Set false to hide this section, defaults to true
 };
 
 // Achievement Section
@@ -291,7 +320,7 @@ const achievementSection = {
       image: require("./assets/images/pwaLogo.webp"),
       imageAlt: "PWA Logo",
       footerLink: [
-        { name: "Certification", url: "" },
+        {name: "Certification", url: ""},
         {
           name: "Final Project",
           url: "https://pakistan-olx-1.firebaseapp.com/"
