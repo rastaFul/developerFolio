@@ -146,8 +146,18 @@
   de sessão.
 - jest/tsc/eslint: não aplicável (mesma justificativa da task anterior —
   conteúdo estático, sem lógica de aplicação nova).
-- commit: (a registrar após push) — push para main.
-- Deploy pós-push: acompanhado via gh run watch; gh-pages avançado;
-  rastaful.dev confirmado servindo o novo bundle (index.html idêntico
-  byte-a-byte ao gh-pages atualizado).
+- commit: de8cbea, push: PASS (a94ad44..de8cbea main -> main)
+- run disparado: 35652456522 -> completed SUCCESS (gh run watch
+  --exit-status = 0). gh-pages avançou para 7f4c7c2 ("Deploying to
+  gh-pages from @ de8cbea0..."), bundle novo main.470bb33f.js.
+- Verificação site ao vivo (com espera de propagação de CDN Fastly, ~1min
+  até o cache expirar e servir o bundle novo): curl https://rastaful.dev
+  passou a servir main.470bb33f.js. Confirmado via grep no bundle JS
+  minificado servido em produção (bytes reais, não cache local):
+  "Desenvolvedor Backend S[ê]nior → DevOps / Platform Engineer" presente;
+  "Platform Engineering, depois de anos" (novo subTitle) presente;
+  "Automa[çã]o & IA" presente; "abertos para todos" (fix de concordância)
+  presente; "engenharia de software" (fix do typo "softwarte") presente;
+  "softwarte" ausente (0 ocorrências); números confidenciais ausentes
+  (0 ocorrências de "100 microsservi*", "200 pods", "78k").
 - Status: DONE
