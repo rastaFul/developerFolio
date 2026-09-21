@@ -391,7 +391,7 @@ const contactInfo = {
   title: emoji("Contato ☎️"),
   subtitle:
     "Discutir um projeto ou apenas dar um 'oi'? Meus contatos estão abertos para todos.",
-  number: "+55 11982294023",
+  number: "+55 11939393283",
   email_address: "rodrigob.dev@gmail.com"
 };
 
