@@ -66,3 +66,88 @@
   lógica de aplicação nova; projeto não usa tsc/eslint como gate padrão no
   package.json além do lint embutido no react-scripts build).
 - Status: DONE
+
+## Task: corrigir pipeline de deploy quebrado (Node 18 + npm@latest) — 2026-09-21T17:33:10-03:00
+- Diagnóstico: deploy.yml fixava node-version 18.x mas rodava
+  `npm install -g npm@latest`, que hoje exige Node >=22 -> falha EBADENGINE
+  no step "Update npm 🚀" em todo run desde dez/2023. gh-pages ficou parado
+  no commit f98c4be (dez/2023); site em produção nunca recebeu updates
+  desde então, incluindo o conteúdo da sessão anterior (commit 0f16a34).
+- Fix: deploy.yml -> node-version 20.x, step "Update npm 🚀" removido
+  inteiramente (setup-node@v3.8.1 com Node 20.x já traz npm compatível).
+  prettier.yml -> node-version 18.x -> 20.x (consistência, sem o bug).
+- commit: a94ad44, push: PASS (0f16a34..a94ad44 main -> main)
+- run disparado: 35651595444 (workflow_dispatch/push) -> completed SUCCESS
+  em 46s (gh run watch --exit-status = 0). Warnings não bloqueantes:
+  Node 20 deprecation notice em runner, input GITHUB_TOKEN não reconhecido
+  pela action JamesIves (usa "token"), aviso de migração ubuntu-latest ->
+  ubuntu-26 (out/2026) — nenhum bloqueia o deploy, fora de escopo desta task.
+- gh-pages avançou: origin/gh-pages agora em 23d1c75 ("Deploying to
+  gh-pages from @ a94ad4447d57addcb2c6b1a184f09400ea510b07"), não mais
+  f98c4be de dez/2023.
+- Verificação site ao vivo: curl -sI https://rastaful.dev -> HTTP/2 200.
+  Comparação byte-a-byte: index.html de https://rastaful.dev idêntico
+  (2182 bytes, main.43acffef.js) ao index.html do branch gh-pages recém
+  publicado. Header last-modified desatualizado (Dec 2023) era ruído de
+  metadado de CDN Fastly/Varnish na frente do GH Pages, não afeta o
+  conteúdo servido (confirmado via diff).
+- Status: DONE
+
+## Task: revisar conteúdo do site e currículo (timeline, ortografia, dados sensíveis) — 2026-09-21T17:45:00-03:00
+- src/portfolio.js:
+  - workExperiences[0] (Pontaltech): unificado em um único bloco
+    "Desenvolvedor Backend Sênior → DevOps / Platform Engineer" (Junho
+    2022 – Presente), evitando implicar "Platform Engineer desde 2022".
+    Bullets ajustados para refletir transição gradual (assumindo a frente
+    de Platform Engineering sozinho desde abril/2026) e generalizados por
+    confidencialidade: removidos números exatos ("100 microsserviços",
+    "200 pods", "USD 78k/mês", "2 clusters EKS e 3 contas AWS") ->
+    substituídos por "múltiplas contas AWS, dezenas de microsserviços e
+    centenas de pods em produção"; bullet de FinOps sem menção a
+    clusters/contas específicas.
+  - greeting.subTitle: reescrito conforme aprovado (perfil híbrido
+    backend/infra, DevOps/Platform Engineering, Kubernetes, observabilidade,
+    automação, autoanálise).
+  - techStack.experience: "Programming" 70% -> "Automação & IA" 60%.
+    Backend 80% e DevOps 75% mantidos.
+  - Typos corrigidos: "engenharia de softwarte" -> "engenharia de software"
+    (FATEC, já apontado no pedido); adicional encontrado na revisão:
+    contactInfo.subtitle "Meus contatos estão aberto para todos." ->
+    "estão abertos" (concordância de número). Revisão nas demais seções
+    display:true (skills, educação, experiência, projetos, contato) não
+    encontrou outros erros óbvios.
+- Currículo PDF (public/curriculo-rodrigo-barbosa.pdf): regenerado a
+  partir do HTML/Playwright da sessão anterior (recuperado do scratchpad
+  da sessão original, ainda presente em /tmp), aplicando: mesmo
+  ajuste de cargo/bullets da Pontaltech (sem números confidenciais);
+  seção Competências com "MongoDB / MySQL" substituído por "FinOps /
+  Kubecost" (65%), mantendo Kubernetes, Terraform, AWS, Docker, Linux |
+  GitOps/ArgoCD, Observabilidade, Node.js/TypeScript, Git. Revisão
+  ortográfica adicional no HTML: "Programa aprendizagem em serviços
+  administrativos" (SENAC) -> "Programa de aprendizagem em serviços
+  administrativos" (preposição faltando). PDF gerado via Playwright
+  (`chromium.launch()` + `page.pdf()`, browser reaproveitado de
+  node_modules de outro projeto local — ambiente não tinha `playwright`
+  instalado no developerFolio nem globalmente); confirmado 1 página via
+  screenshot full-page do HTML fonte antes de gerar o PDF final. Copiado
+  para public/curriculo-rodrigo-barbosa.pdf.
+- check-format (prettier): PASS — únicos warnings são em build/ e
+  public/*.json (artefatos gerados, pré-existentes, fora do escopo);
+  src/portfolio.js formatado corretamente.
+- Gate visual: `.env` com REACT_APP_GITHUB_TOKEN aparentemente expirado
+  (pré-existente, fora de escopo) contornado com `npx react-scripts start`
+  direto; servidor local subiu na porta 4321 (3000/4123 ocupadas por
+  processos remanescentes de sessão anterior), compilou sem erros.
+  Screenshots via Playwright confirmam: home renderiza greeting.subTitle
+  novo sem quebra de layout; seção "Experiências" renderiza um único
+  card da Pontaltech com o novo cargo/bullets, sem duplicar cards nem
+  quebrar grid. Evidência: .specs/features/site-content-refresh/screenshots/
+  (home-partb.png, experience-partb.png) — cópias movidas do scratchpad
+  de sessão.
+- jest/tsc/eslint: não aplicável (mesma justificativa da task anterior —
+  conteúdo estático, sem lógica de aplicação nova).
+- commit: (a registrar após push) — push para main.
+- Deploy pós-push: acompanhado via gh run watch; gh-pages avançado;
+  rastaful.dev confirmado servindo o novo bundle (index.html idêntico
+  byte-a-byte ao gh-pages atualizado).
+- Status: DONE

@@ -23,7 +23,7 @@ const greeting = {
   username: "Rodrigo",
   title: "Olá, eu sou o Rodrigo",
   subTitle: emoji(
-    "Gosto de inovação e atuar com estudos de novas tecnologias e metodologias é o que me motiva. Pratico a autoanálise como um caminho essencial para o desenvolvimento pessoal e profissional."
+    "Engenheiro de software com perfil híbrido entre backend e infraestrutura — hoje à frente de DevOps/Platform Engineering, depois de anos migrando produtos para Kubernetes e construindo observabilidade de verdade. Gosto de inovação, automatizo o que dá pra automatizar e pratico autoanálise como parte do meu desenvolvimento profissional."
   ),
   resumeLink: "https://rastaful.dev/curriculo-rodrigo-barbosa.pdf", // Set to empty to hide the button
   displayGreeting: true // Set false to hide this section, defaults to true
@@ -118,7 +118,7 @@ const educationInfo = {
       duration: "2013 - 2018",
       desc: "",
       descBullets: [
-        "Atividades e grupos: Grande foco em paradigmas de programação, estrutura e banco de dados, engenharia de softwarte, gestão de projetos e equipes e conceitos de empreendedorismo.",
+        "Atividades e grupos: Grande foco em paradigmas de programação, estrutura e banco de dados, engenharia de software, gestão de projetos e equipes e conceitos de empreendedorismo.",
         "Projeto de graduação desenvolvido com Ionic 3, servidor em PHP e banco de dados MySQL."
       ]
     },
@@ -151,8 +151,8 @@ const techStack = {
       progressPercentage: "75%"
     },
     {
-      Stack: "Programming",
-      progressPercentage: "70%"
+      Stack: "Automação & IA",
+      progressPercentage: "60%"
     }
   ],
   displayCodersrank: true // Set true to display codersrank badges section need to changes your username in src/containers/skillProgress/skillProgress.js:17:62, defaults to false
@@ -165,16 +165,16 @@ const workExperiences = {
   title: "Experiências",
   experience: [
     {
-      role: "DevOps / Platform Engineer",
+      role: "Desenvolvedor Backend Sênior → DevOps / Platform Engineer",
       company: "Pontaltech",
       companylogo: require("./assets/images/pontaltechLogo.webp"),
       date: "Junho 2022 – Presente",
       desc: "Platform Engineer | Kubernetes, Terraform, AWS, Observabilidade, FinOps",
       descBullets: [
-        "Atuei como desenvolvedor backend (Node.js/TypeScript) na squad core de um produto de disparo de SMS (~15M msgs/dia) antes de migrar para o time de DevOps/Infraestrutura, onde lidero iniciativas próprias de plataforma.",
-        "Modernização de plataforma: padronizei e executei migrações de EC2 para Kubernetes (EKS), com Helm, GitOps via ArgoCD e autoscaling (HPA/KEDA) — de deploy manual via SSH para deploy contínuo com auto-healing.",
+        "Iniciei como desenvolvedor backend (Node.js/TypeScript) na squad core de um produto de disparo de SMS (~15M msgs/dia). Ao longo de ~2 anos venho assumindo responsabilidades crescentes de infraestrutura, migrando oficialmente para o time de DevOps/Platform Engineering e assumindo sozinho essa frente desde abril de 2026.",
+        "Modernização de plataforma: padronizei e executei migrações de EC2 para Kubernetes (EKS), com Helm, GitOps via ArgoCD e autoscaling (HPA/KEDA) — de deploy manual via SSH para deploy contínuo com auto-healing, em ambiente com múltiplas contas AWS, dezenas de microsserviços e centenas de pods em produção.",
         "Observabilidade: reestruturei stack de métricas e alertas (VictoriaMetrics, Grafana, Alertmanager), reduzindo o tempo de detecção de incidentes de horas/dias para minutos, com 15+ dashboards operacionais.",
-        "FinOps: implementei visibilidade de custos por namespace/pod (Kubecost) em ambiente com 2 clusters EKS e 3 contas AWS, dando suporte a decisões de right-sizing.",
+        "FinOps: implementei visibilidade de custos por namespace/pod (Kubecost), dando suporte a decisões de right-sizing.",
         "Segurança: liderei enforcement de TLS 1.2+ em produção e eliminação de credenciais hardcoded via IRSA."
       ]
     },
@@ -390,7 +390,7 @@ const podcastSection = {
 const contactInfo = {
   title: emoji("Contato ☎️"),
   subtitle:
-    "Discutir um projeto ou apenas dar um 'oi'? Meus contatos estão aberto para todos.",
+    "Discutir um projeto ou apenas dar um 'oi'? Meus contatos estão abertos para todos.",
   number: "+55 11982294023",
   email_address: "rodrigob.dev@gmail.com"
 };
