@@ -50,3 +50,10 @@ Ver resultado final em `infra-platform/.specs/features/portfolio-launch-2026/spe
 Pendência do usuário (fora do meu controle): pinar manualmente
 `rasfaful-finances`, `infra-platform`, `agents-harness` no perfil GitHub
 (API não suporta pin programático).
+
+## Pins GitHub — 2026-09-22
+Usuário já pinou manualmente `infra-platform` e `agents-harness` (confirmado
+via profile.json ao vivo, sem erros). `rasfaful-finances` segue de fora —
+repo continua privado (rotação de credenciais pendente, decisão do
+usuário). Ele confirmou: **fica em segundo plano por enquanto**, não é
+bloqueio nem pendência urgente. Retomar só se ele pedir.
