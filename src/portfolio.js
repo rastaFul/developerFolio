@@ -173,7 +173,8 @@ const workExperiences = {
       desc: "Platform Engineer | Kubernetes, Terraform, AWS, Observabilidade, FinOps",
       descBullets: [
         "Iniciei como desenvolvedor backend (Node.js/TypeScript) na squad core de um produto de disparo de SMS (~15M msgs/dia). Ao longo de ~2 anos venho assumindo responsabilidades crescentes de infraestrutura, migrando oficialmente para o time de DevOps/Platform Engineering e assumindo sozinho essa frente desde abril de 2026.",
-        "Modernização de plataforma: padronizei e executei migrações de EC2 para Kubernetes (EKS), com Helm, GitOps via ArgoCD e autoscaling (HPA/KEDA) — de deploy manual via SSH para deploy contínuo com auto-healing, em ambiente com múltiplas contas AWS, dezenas de microsserviços e centenas de pods em produção.",
+        "Modernização de plataforma: padronizei e executei migrações de EC2 para Kubernetes (EKS), com Helm, GitOps via ArgoCD, service mesh (Istio) e autoscaling (HPA/KEDA) — de deploy manual via SSH para deploy contínuo com auto-healing, em ambiente com múltiplas contas AWS, dezenas de microsserviços e centenas de pods em produção.",
+        "Dados e IaC: levei workloads stateful pra dentro do cluster (MongoDB com operator, TLS e backup) e reorganizei o Terraform do zero — módulos padronizados, state consolidado e import de recursos que antes eram criados manualmente.",
         "Observabilidade: reestruturei stack de métricas e alertas (VictoriaMetrics, Grafana, Alertmanager), reduzindo o tempo de detecção de incidentes de horas/dias para minutos, com 15+ dashboards operacionais.",
         "FinOps: implementei visibilidade de custos por namespace/pod (Kubecost), dando suporte a decisões de right-sizing.",
         "Segurança: liderei enforcement de TLS 1.2+ em produção e eliminação de credenciais hardcoded via IRSA."
