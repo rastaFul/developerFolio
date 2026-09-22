@@ -34,6 +34,7 @@ const greeting = {
 const socialMediaLinks = {
   github: "https://github.com/rastaful",
   linkedin: "https://www.linkedin.com/in/rastaful/",
+  whatsapp: "5511939393283", // apenas dígitos, com código do país (55), sem símbolos
   gmail: "rodrigob.dev@gmail.com",
   // Instagram, Twitter and Kaggle are also supported in the links!
   // To customize icons and social links, tweak src/components/SocialMedia
