@@ -276,3 +276,24 @@
 - commits: 96e2af3 (revert), 94b1b12 (whatsapp)
 - Deploy: run completed success, confirmado
 - Status: DONE
+
+## Task: bio GitHub + README de perfil + 3 conquistas técnicas — 2026-09-22T16:30:00-03:00
+- Bio do GitHub (rastaFul): atualizada via API (escopo `user` obtido por
+  device flow, com 3 tentativas devido a timeout curto — corrigido usando
+  run_in_background pra entregar o código na hora, sem atraso).
+- README de perfil (repo rastaFul/rastaFul, público, renderiza na página
+  do perfil): reescrito. Estava desatualizado desde antes desta sessão
+  ("aprendendo DevOps", "desenvolvedor backend", skills sem Terraform/
+  ArgoCD/Observabilidade). Agora alinhado com site + projetos públicos.
+- Site/currículo: adicionadas 3 conquistas do relatório de entregas ainda
+  não usadas — service mesh (Istio) no bullet de modernização de
+  plataforma; novo bullet "Dados e IaC" (MongoDB com operator/TLS/backup +
+  reorganização do Terraform); competências do currículo ganharam
+  "Service Mesh (Istio)" e "MongoDB (Kubernetes operator)" (removido
+  "Git" da lista pra manter 1 página — ainda cabe no espaço).
+- Currículo regenerado (mesmo pipeline HTML+Playwright), confirmado 1
+  página (altura ~1123px, limite A4 é ~1122px).
+- commits: 6d44cac (site/currículo), de32b90 (README de perfil, repo
+  separado rastaFul/rastaFul)
+- Deploy developerFolio: completed success, verificado
+- Status: DONE
