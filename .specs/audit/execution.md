@@ -255,3 +255,24 @@
   (~10min de TTL, mesmo padrão já visto nesta sessão) — não bloqueante.
 - commits: 3591f3a (ativação), 8a4de27 (fix do token)
 - Status: DONE (site), PENDENTE ação manual do usuário (pinar os 3 repos)
+
+## Task: adicionar WhatsApp na seção de contato + reverter showGithubProfile — 2026-09-22T15:00:00-03:00
+- Bug reportado pelo usuário: seção de Contato quebrou (card genérico do
+  GitHub em inglês, bio vazia, avatar placeholder) após ativação do
+  openSource na rodada anterior.
+- Causa: `openSource.showGithubProfile: true` faz `Profile.js` substituir
+  `<Contact />` inteiro por `<GithubProfileCard>`. Revertido pra `false`
+  (commit 96e2af3) — `openSource.display` continua `true`, seção Projetos
+  (pinned repos) intacta, são flags independentes.
+- WhatsApp adicionado: `$whatsapp: #25d366` em `_globalColor.scss`,
+  bloco `.whatsapp i` em `SocialMedia.scss`, link `wa.me/<numero>` em
+  `SocialMedia.js` (entre linkedin e gmail), `socialMediaLinks.whatsapp`
+  em `portfolio.js` (mesmo número do currículo/contato).
+- Verificação visual: servidor local (porta 4322) + Playwright screenshot
+  confirmando ícone verde correto na seção de Contato normal (PT-BR) e
+  card RastaFinanças com "Ver código" funcionando. Evidência salva em
+  .specs/features/site-content-refresh/screenshots/contact-whatsapp.png
+- check-format: PASS
+- commits: 96e2af3 (revert), 94b1b12 (whatsapp)
+- Deploy: run completed success, confirmado
+- Status: DONE
