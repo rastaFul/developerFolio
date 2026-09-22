@@ -297,3 +297,9 @@
   separado rastaFul/rastaFul)
 - Deploy developerFolio: completed success, verificado
 - Status: DONE
+
+## SESSÃO ENCERRADA — 2026-09-22T13:43:20-03:00
+Encerrada por pedido do usuário. Checkpoint completo em
+.specs/project/STATE.md (seção "CHECKPOINT DE ENCERRAMENTO"). Todos os
+commits desta sessão estão pushados em main, todos os deploys verificados
+com sucesso ao vivo. Nenhum processo/servidor local ficou rodando.
