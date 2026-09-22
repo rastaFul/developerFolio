@@ -199,3 +199,59 @@
   PDF ao vivo (curriculo-rodrigo-barbosa.pdf, content-length 60509)
   byte-idêntico ao arquivo local em public/ (diff -q vazio).
 - Status: DONE
+
+## Task: Restaurar descrições de Formação no currículo PDF — 2026-09-21T18:31:34-03:00
+- Escopo: public/curriculo-rodrigo-barbosa.pdf (conteúdo, sem lógica — TDD não aplicável)
+- Fonte HTML: /tmp/claude-1000/.../scratchpad/curriculo.html (reutilizado de sessão anterior), regenerado via Playwright (render-pdf.js)
+- Mudança: adicionados bullets (mesmo estilo visual da seção Experiência) nas 3 entradas de Formação (FATEC, ETEC, SENAC), copiados de src/portfolio.js (educationInfo) + texto SENAC fornecido
+- Paginação: manteve 1 página (sem necessidade de reduzir espaçamento)
+- Integridade binária: git cat-file -p HEAD:public/curriculo-rodrigo-barbosa.pdf | wc -c = 62834, igual ao working tree (62834) — sem corrupção
+- .gitattributes: `*.pdf binary` já presente
+- Commit: be382ca "fix: restaurar descrições de formação no currículo"
+- Push: origin/main atualizado (0461011..be382ca)
+- Deploy: gh-pages deploy 58b32b5 a partir de be382ca, workflow deploy.yml completed success (35657493547, 53s)
+- Downloads: /mnt/c/Users/rodri/Downloads/curriculo-rodrigo-barbosa.pdf sobrescrito (62834 bytes, igual ao local)
+- Verificação ao vivo: gh-pages branch correta (62834 bytes) desde o deploy; CDN Fastly do GitHub Pages serviu cache antigo (60509 bytes, cache-control max-age=600) por até ~10min pós-deploy — aguardado expiração do cache antes de confirmar content-length ao vivo
+- Confirmação final ao vivo: curl -sI https://rastaful.dev/curriculo-rodrigo-barbosa.pdf → content-length: 62834 (bate com local), last-modified: 21:31:17 GMT
+- Status: DONE
+
+## Task: Atualizar endereço no currículo PDF — 2026-09-21T18:45:35-03:00
+- Escopo: public/curriculo-rodrigo-barbosa.pdf (conteúdo, sem lógica — TDD não aplicável)
+- Mudança: linha "Endereço" no bloco Contato, de "Rua Cirino de Abreu, Guaiauna, 03630-010 - São Paulo/SP." para "Rua Joaquim Piza, 96 - apto 72, Cambuci, 01528-010 - São Paulo/SP."
+- Nota: usuário informou CEP como "01528-10" (7 dígitos); corrigido para "01528-010" (formato válido XXXXX-XXX, faixa compatível com Cambuci/SP) — pendente confirmação do usuário
+- Fonte HTML: /tmp/claude-1000/.../scratchpad/curriculo.html (reutilizado de sessão anterior), editada só a linha do endereço, regenerada via Playwright (render-pdf.js)
+- Verificação visual: screenshot do bloco Contato do HTML antes do PDF final, confirmando Celular/E-mail inalterados e novo endereço correto
+- Integridade binária: git cat-file -p HEAD:public/curriculo-rodrigo-barbosa.pdf | wc -c = 62834 (antigo); novo arquivo = 62940 bytes (diferença esperada por texto mais longo); .gitattributes `*.pdf binary` presente, git diff mostrou "Bin 62834 -> 62940 bytes" (sem corrupção por CRLF)
+- Commit: 8a5b69c "fix: atualizar endereço no currículo"
+- Push: origin/main atualizado (be382ca..8a5b69c)
+- Deploy: gh-pages deploy via workflow deploy.yml, run 35658869857, completed success (46s)
+- Downloads: /mnt/c/Users/rodri/Downloads/curriculo-rodrigo-barbosa.pdf sobrescrito (62940 bytes, igual ao local)
+- Verificação ao vivo: aguardada expiração de cache CDN (cache-control max-age=600); confirmado content-length: 62940, last-modified: 21:45:20 GMT
+- Status: DONE
+
+## Task: ativar Open Source + link de código RastaFinanças — 2026-09-22T01:30:00-03:00
+- portfolio.js: openSource.display + showGithubProfile = true
+- bigProjects: card RastaFinanças ganhou footerLink "Ver código" ->
+  github.com/rastaFul/rasfaful-finances
+- Bug crítico encontrado e corrigido no mesmo passe: secrets.GITHUB_TOKEN
+  (automático da Action) retorna "Resource not accessible by integration"
+  ao resolver stargazers de repos pinados via GraphQL -> node vira null ->
+  Projects.js quebraria em runtime (`.node.id` de null). Corrigido:
+  - Novo secret GH_PROFILE_TOKEN (personal access token via `gh auth
+    token`, escopos: delete_repo/gist/read:org/repo/workflow — mais amplo
+    que o necessário, recomendado ao usuário trocar por um token dedicado
+    de escopo mínimo (public_repo read) quando for conveniente)
+  - deploy.yml: REACT_APP_GITHUB_TOKEN aponta pro novo secret
+  - Projects.js: filtro defensivo contra node null (não quebra mais mesmo
+    se o token voltar a ter escopo insuficiente no futuro)
+  - Bônus: MEDIUM_USERNAME corrigido (ainda era "saadpasta", do template
+    original, agora "Nascimento")
+- Verificado na fonte real (branch gh-pages, commit e6663e2): profile.json
+  sem erros, 4 pins reais retornados (cdb-calculator, sandbox,
+  ScaffoldNodeJS, supply-store) — ainda os pins ANTIGOS, não
+  rastafinancas/infra-platform/agents-harness, porque a API do GitHub não
+  permite pinar via automação — usuário precisa pinar manualmente na UI.
+- CDN (rastaful.dev) ainda servia versão cacheada no momento da checagem
+  (~10min de TTL, mesmo padrão já visto nesta sessão) — não bloqueante.
+- commits: 3591f3a (ativação), 8a4de27 (fix do token)
+- Status: DONE (site), PENDENTE ação manual do usuário (pinar os 3 repos)
