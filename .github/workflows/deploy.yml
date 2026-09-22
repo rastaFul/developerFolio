@@ -2,9 +2,15 @@ name: Build and Deploy
 env:
   CI: false
   GITHUB_USERNAME: ${{ github.repository_owner }}
-  REACT_APP_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This is automatically set by Github Actions
+  # secrets.GITHUB_TOKEN (o automático da Action) não tem escopo suficiente
+  # pra resolver GraphQL user(login).pinnedItems.stargazers de repos fora
+  # deste workflow — retorna "Resource not accessible by integration" e
+  # quebra a seção Open Source (nodes viram null). GH_PROFILE_TOKEN é um
+  # personal access token dedicado, com escopo de leitura de repositórios
+  # públicos, configurado como secret do repositório.
+  REACT_APP_GITHUB_TOKEN: ${{ secrets.GH_PROFILE_TOKEN }}
   USE_GITHUB_DATA: "true"
-  MEDIUM_USERNAME: "saadpasta" # Change this to your medium username
+  MEDIUM_USERNAME: "Nascimento" # usuário real do Medium do dono do site
 on:
   workflow_dispatch:
   push:
